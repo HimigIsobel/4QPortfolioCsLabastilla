@@ -11,37 +11,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="../../assets/pshslogo.png" sizes="32x32" type="image/png">
+    <script src="script.js" defer></script>
    <style>
-        body{
-          padding: 50px;
-          font-family: arial;
-          width: 80%;
-          margin-left: 10%;
-        }
-
-        .title {
-            color: #000000;
-            text-align: center;
-        }
+       
 
         fieldset {
-             margin-top: 50px;
-             font-family: 'Verdana', sans-serif;
-            width: 50%; /* Set a specific width (can be px, %, etc.) */
-            margin-left: auto; /* Centers horizontally */
-            margin-right: auto; /* Centers horizontally */
+             font-family: Helvetica, sans-serif;
+            width: 30%; 
+            margin-left: auto; 
+            margin-right: auto; 
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
+            border-radius: 15px; 
+            border: 2px solid #111110;
+            padding: 25px;
         }
 
-        legend {
-            background: black;
-            color: yellow;
-            padding: 5px;
+        .align-input label {
+          display:block;
         }
-        label {
-             margin: 5%;
+
+        .align-input {
+          width:425px;
+          height: 20px;
         }
+
+        .star-rating {
+          position: relative;
+        }
+
+        .star-rating .stars {
+          display: flex;
+          align-items:center;
+          gap:10px;
+        }
+
+        .stars i {
+          color: rgb(0, 0, 0);
+          font-size: 20px;
+          cursor: pointer;
+          transition: color 0.1s ease;
+        }
+
+        .stars i.active{
+          color: yellow;
+        }
+
+        .addMovie {
+          width:425px;
+          height: 30px
+        }
+      
     </style>
   </head>
   <body>
@@ -50,68 +70,64 @@
             <h1>
                 Q4 1st Graded Exercise   
             </h1>
-            <h3>by AL Mendoza </h3>
+            <h3>by Himig Labastilla </h3>
         </div>
     </header>
     <section>
-      <h1 class="title">Add a Movie <br/>
-      </h1>
-      <form id="dForm" method="get">
+      <form id="myForm" method="get">
         <fieldset>
-        <label> Title: <br></label>
-            <input  onfocus="changeColor(this)" onblur="resetColor(this)" type="text" name="sid" id="sid" required />
+          <h2 style="text-align:center" class="title">Add a Movie <br/>
+      </h2>
+        <label for="title"> Title: <br></label>
+            <input type="text" class="align-input" onfocus="changeColor(this)" onblur="resetColor(this)" name="title" id="title" required />
           </label><br/><br/>
-          <label> FullName :
-            <input onfocus="changeColor(this)"  onblur="resetColor(this)" type="text" name="fname" id="fname" required />
-          </label><br/><br/>
-          <label> Date Of Birth :
-            <input type="date" name="dob" id="dob" />
-          </label><br/><br/>
-          <label> Email :
-            <input onfocus="changeColor(this)"  onblur="resetColor(this)" type="email" name="semail" id="semail" required />
-          </label><br/><br/>
-          <label> Mobile Phone :
-            <input onfocus="changeColor(this)"  onblur="resetColor(this)" type="text" name="phone" id="phone" pattern="[0-9]{11}" placeholder="Type in your 11 digit Mobile Phone Number" required />
-          </label><br/><br/>
-          <label> Select Your Grade Level
-            <select name="grade">
-              <option disabled selected value> -- select an option -- </option>
-              <option value="Grade 7"> Grade 7 </option>
-              <option value="Grade 8"> Grade 8 </option>
-              <option value="Grade 9"> Grade 9 </option>
-              <option value="Grade 10"> Grade 10 </option>
-              <option value="Grade 11"> Grade 11 </option>
-              <option value="Grade 12"> Grade 12 </option>
-            </select>
-          </label> <br/>
-          <label> 
-            <input type="radio" name="inex" value="Intern" /> Intern
-            <input type="radio" name="inex" value="Extern" /> Extern
-          </label><br/><br/>
-          <label> Select Your Club
-            <select name="clubs">
-              <option disabled selected value> -- select an option -- </option>
-              <option value="AKSIS"> AKSIS </option>
-              <option value="Bake Club"> Bake Club </option>
-              <option value="Computron"> Computron </option>
-              <option value="Himig Agham"> Himig Agham </option>
-              <option value="Kamalayan"> Kamalayan </option>
-              <option value="Sagala"> Sagala </option>
-            </select>
-          </label> <br/>
-          <label> Why do you want to join : 
-            <textarea name="about" id="about">
+          <label for="year"> Year: <br></label>
+          <input type="text" class="align-input" onfocus="changeColor(this)" onblur="resetColor(this)" name="year" id="year" required />
+            </label><br/><br/>
+          <label for="genre"> Genre: <br> 
+            <select name="genre" class="align-input" onfocus="changeColor(this)" onblur="resetColor(this)" name="genre" id="genre" required> 
+              <option disabled selected value> Select a genre </option>
+              <option value="action"> Action </option>
+              <option value="romance"> Romance </option>
+              <option value="drama"> Drama </option>
+              <option value="comedy"> Comedy </option>
+              <option value="Grade 11"> Sci-fi </option>
               
-            </textarea>
-          </label><br/><br/>
+            </select>
+          </label> <br/> 
           
-          
+          <br><label for="rating"> Rating: <br><br>
+            
+          <div class="star-rating">
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+          </label> <br/> 
+
+          <button class="addMovie" type="submit"> Accept</button><br/><br/>
+
+          <h2 style="text-align:center" class="title">Movie List <br/> <div id="movieList"></div></h2>
+                      
         </fieldset>  
-        <fieldset>
-          <legend>Action Buttons</legend>
-          <button type="submit"> Accept </button>
-          <input type="reset" value=" Clear " />
-        </fieldset> 
+
+        <br><br>
+        movieList.appendChild(movieItem);
+        
+        window.onload = displayMovies; {
+          const storedMovies = JSON.parse(localStorage.getItem("movies")) || [];
+          storedMovies.forEach(movie => {
+            const movieItem = document.createElement("p");
+            movieItem.textContent = `${movie.title} (${movie.year}) - ${movie.genre} - Rating: ${movie.rating}`;
+            document.getElementById("movieList").appendChild(movieItem);
+          });
+        };
+
+        displayMovies();
       </form>
       
     </section>
