@@ -1,5 +1,4 @@
 const stars=document.querySelectorAll(".stars i");
-console.log(stars);
 let rating=0;
 
 stars.forEach((star, index1)=>{
@@ -12,7 +11,6 @@ stars.forEach((star, index1)=>{
         })
     })
 
-    console.log("Selected rating: "+rating);
 })
 
       if (typeof(Storage) !== "undefined") {
@@ -21,10 +19,10 @@ stars.forEach((star, index1)=>{
     const myForm = document.getElementById('myForm');
 
     myForm.addEventListener('submit', function(event) {
-        // Prevent the default form submission behavior
+        
         event.preventDefault();
 
-        // Get the values from the form inputs
+        
         const title = document.getElementById('title').value;
         const year = document.getElementById('year').value;
         const genre = document.getElementById('genre').value;
@@ -43,6 +41,11 @@ stars.forEach((star, index1)=>{
         alert('Movie saved!');
         myForm.reset();
 
+        rating = 0;
+        stars.forEach(star => star.classList.remove("active"));
+
+            displayMovies();
+
         
     });
 } else {
@@ -54,22 +57,21 @@ function displayMovies() {
     const movies = JSON.parse(localStorage.getItem('movies')) || [];
 
     movieList.innerHTML = '';
-
+//hi
     movies.forEach((movie, index) => {
         const movieElement = document.createElement('div');
         movieElement.innerHTML = `
             <p>${movie.title}</p>
-            <p>"("+${movie.year}+")"</p>
-            <p>"-"+${movie.genre}+","</p>
+            <p>(${movie.year})</p>
+            <p>- ${movie.genre}</p>
             <p>Rating: ${"⭐".repeat(movie.rating)}</p><hr>
-
-            movieList.appendChild(movieElement);
         `;
-        movieList.appendChild(movieElement);
+            movieList.appendChild(movieElement);
+        
+        
+        })
+    };
 
-
-        window.onload = function() {
+    window.onload = function() {
             displayMovies();
-        }
-    });
 }

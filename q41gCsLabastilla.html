@@ -116,18 +116,7 @@
         </fieldset>  
 
         <br><br>
-        movieList.appendChild(movieItem);
-        
-        window.onload = displayMovies; {
-          const storedMovies = JSON.parse(localStorage.getItem("movies")) || [];
-          storedMovies.forEach(movie => {
-            const movieItem = document.createElement("p");
-            movieItem.textContent = `${movie.title} (${movie.year}) - ${movie.genre} - Rating: ${movie.rating}`;
-            document.getElementById("movieList").appendChild(movieItem);
-          });
-        };
-
-        displayMovies();
+  
       </form>
       
     </section>
