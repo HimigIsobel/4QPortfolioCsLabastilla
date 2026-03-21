@@ -54,7 +54,7 @@ function displayMovies() {
         movieElement.innerHTML = `
             ${movie.title} (${movie.year}) - ${movie.genre},
             Rating: <span class="stars">${"⭐".repeat(movie.rating)}</span>
-            <button class="delete-btn" onclick="deleteMovie(${index})">Delete</button>
+            <button onclick="if (confirm('Are you sure you want to delete this movie?')) deleteMovie(${index})" class="delete-btn">Delete</button>
         `;
         movieList.appendChild(movieElement);
     });
