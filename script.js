@@ -57,14 +57,14 @@ function displayMovies() {
     const movies = JSON.parse(localStorage.getItem('movies')) || [];
 
     movieList.innerHTML = '';
-//hi
-    movies.forEach((movie, index) => {
+
+    movies.forEach((movie) => {
         const movieElement = document.createElement('div');
+
+        movieElement.classList.add("movie-item");
         movieElement.innerHTML = `
-            <p>${movie.title}</p>
-            <p>(${movie.year})</p>
-            <p>- ${movie.genre}</p>
-            <p>Rating: ${"⭐".repeat(movie.rating)}</p><hr>
+            ${movie.title} (${movie.year}) - ${movie.genre},
+            Rating: <span class="stars">${"⭐".repeat(movie.rating)}</span>
         `;
             movieList.appendChild(movieElement);
         

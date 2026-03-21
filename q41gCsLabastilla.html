@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Q3 2nd Graded Exercise">
-    <meta name="keywords" content="HTML Forms">
-    <meta name="author" content="AL Mendoza">
+    <meta name="description" content="Q4 1st Graded Exercise">
+    <meta name="keywords" content="Movie Rating with CRUD">
+    <meta name="author" content="Himig Labastilla">
     <title>Sample Form</title>
     <!-- updated external css link to show how to share it between repository -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,24 +16,41 @@
        
 
         fieldset {
-             font-family: Helvetica, sans-serif;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+            color:white;
             width: 30%; 
             margin-left: auto; 
             margin-right: auto; 
             margin: 0 auto;
             text-align: left;
             border-radius: 15px; 
-            border: 2px solid #111110;
+            border: 2px solid #ffffff;
             padding: 25px;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .align-input label {
+        .fillIn label {
           display:block;
         }
 
-        .align-input {
+        .fillIn {
           width:425px;
           height: 20px;
+          border-color: #0a0a0a;
+        }
+
+        .selectGenre {
+          width:425px;
+          height: 30px;
+          border: 1px solid #ccc;
+          transition: border-color 0.3s ease;
+        }
+
+        .selectGenre:hover {
+          border-color: #0a0a0a; 
+          cursor: pointer;
+
         }
 
         .star-rating {
@@ -59,18 +76,88 @@
 
         .addMovie {
           width:425px;
-          height: 30px
+          height: 40px;
+          background-color: rgb(70, 68, 233);
+          color: #ffffff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+          transition: all 0.3s ease; 
+          font-size: 15px;
         }
-      
+
+        .addMovie:hover {
+          transform: translateY(-5px); 
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); 
+        }
+
+        #movieList {
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, sans-serif; /* clean modern font */
+}
+
+.movie-item {
+    background-color: #f2f2f2;
+    padding: 2px 2px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-weight: 200;
+    color: black;
+}
+
+.stars {
+    color: #ffcc00;
+    font-size: 18px;
+}
+
+.background-container {
+    position: fixed;   
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-image: url('https://i.pinimg.com/736x/d0/b7/91/d0b791a56757ffcc7430031ef96e32f2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: imageChange 15s infinite;
+}
+
+
+@keyframes imageChange {
+  0% {
+    background-image: url('https://i.pinimg.com/736x/d0/b7/91/d0b791a56757ffcc7430031ef96e32f2.jpg');
+  }
+  33% {
+    background-image: url('https://i.pinimg.com/736x/1a/ab/c2/1aabc29d67a83bb4652157dc8e80a071.jpg');
+  }
+  66% {
+    background-image: url('https://i.pinimg.com/1200x/81/44/68/8144683fc28e8c982e1c1a7b23f64199.jpg');
+  }
+  100% {
+    background-image: url('https://i.pinimg.com/736x/d0/b7/91/d0b791a56757ffcc7430031ef96e32f2.jpg');
+  }
+}      
     </style>
+
+
+</div>
   </head>
   <body>
+        <div class="background-container"></div>
      <header>
         <div>
-            <h1>
+            <h1 style="color: white;">
                 Q4 1st Graded Exercise   
             </h1>
-            <h3>by Himig Labastilla </h3>
+            <h3 style="color: white;">by Himig Labastilla </h3>
         </div>
     </header>
     <section>
@@ -79,13 +166,13 @@
           <h2 style="text-align:center" class="title">Add a Movie <br/>
       </h2>
         <label for="title"> Title: <br></label>
-            <input type="text" class="align-input" onfocus="changeColor(this)" onblur="resetColor(this)" name="title" id="title" required />
+            <input type="text" class="fillIn" onfocus="changeColor(this)" onblur="resetColor(this)" name="title" id="title" required />
           </label><br/><br/>
           <label for="year"> Year: <br></label>
-          <input type="text" class="align-input" onfocus="changeColor(this)" onblur="resetColor(this)" name="year" id="year" required />
+          <input type="text" class="fillIn" onfocus="changeColor(this)" onblur="resetColor(this)" name="year" id="year" required />
             </label><br/><br/>
           <label for="genre"> Genre: <br> 
-            <select name="genre" class="align-input" onfocus="changeColor(this)" onblur="resetColor(this)" name="genre" id="genre" required> 
+            <select name="genre" class="selectGenre" onfocus="changeColor(this)" onblur="resetColor(this)" name="genre" id="genre" required> 
               <option disabled selected value> Select a genre </option>
               <option value="action"> Action </option>
               <option value="romance"> Romance </option>
@@ -109,7 +196,7 @@
           </div>
           </label> <br/> 
 
-          <button class="addMovie" type="submit"> Accept</button><br/><br/>
+          <button class="addMovie" type="submit"> Add Movie</button><br/><br/>
 
           <h2 style="text-align:center" class="title">Movie List <br/> <div id="movieList"></div></h2>
                       
@@ -122,4 +209,5 @@
     </section>
     <script src="script.js"></script>
   </body>
+
 </html>
