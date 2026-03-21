@@ -68,3 +68,4 @@ function deleteMovie(index) {
 }
 
 window.onload = displayMovies;
+//testing
