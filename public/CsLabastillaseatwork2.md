@@ -94,16 +94,59 @@
 
 - Challenge: 
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
+
+    # 1. Move .notice inside .content.
+    # 2. Change left: 400px and top: 60px to top:0, right:0
+
+    # HTML: 
+    <p><div class="content">
+       Main Content
+        <div class="notice">Notice!</div>
+        </div><p>
+
+    # CSS:
+   <p> .content {
+  background: lightyellow;
+  width: 300px;
+  height: 200px;
+  position: absolute; 
+  top: 66px; 
+  left: 200px;
+  z-index: 1;
+}
+
+.notice {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: orange;
+  padding: 10px;
+  z-index: 2;
+}<p>
+
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
+
+    # If position is changed to relative, .content stays on the normal document flow, remains where it would normally appear, and becomes a reference point for .notice. If position is changed to fixed, content is removed from the normal flow, is positioned relative to the browser window, and does not move when you scroll.
+
     * What do you observe on about the effect of z-index on .notice and .content boxes?
+
+    # Changing the values of their z-indexes changes which box is visible when overlapping. 
 
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
-    # static allows the oject
+    # 1. static - elements with static positioning appear in the otrder they'rw written in in HTMl, snd don' overlap with other elements.
+    # 2. relative - is similar to static except it's positioned relative to its static position. It's used for small adjustments and the space it wouldv've taken if it hadn't been moved is preserved in order to keep the original layout.
+    # 3. absolute - the element is now taken completely out of the normal flow of the document and will be allowed to overlap with other elements, placing it based on its positioned container.
+    # 4. fixed - positions the element using the browser window as reference, letting it stay fixed in place no matter where the user scrolks.
 
     b. How does absolute positioning depend on its parent element?
+    # the element with absolute positioning will align itself to the closest parent without a static position. The parent element will determine the exact position of the absolute position element. 
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
+    # An element with fixed positioning will stay fixed in a certain position on the viewport no matter what, while an element with sticky positioning acts like a normal element until it crosses a specific scroll point.
+
 
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+
+    # In designing a webpage for a school event, I would use fixed position to highlight important details such as the name, date, and time of the event, absolute positioning to group certain information such as maps and venues, and static positioning for any additional unformation. I would also use z-index to emphasize the most important parts of the event by putting them at the front of the stack.
